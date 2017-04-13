@@ -339,6 +339,11 @@ public class WikiUtils {
             citation_features.put(key, value);
         }
         citation_features.put("type", getCitationType(citation_text));
+
+        if (citation_features.containsKey("url") && citation_features.containsKey("type")) {
+            citation_features.put("url", citation_features.get("url") + " (" + citation_features.get("type") + ")"); //add type to url, TODO: validate if this works
+        }
+
         return citation_features;
     }
 
